@@ -1,3 +1,0 @@
-all: out
-	g++ ./main.cpp -o out -I./include -fpermissive -w
-
