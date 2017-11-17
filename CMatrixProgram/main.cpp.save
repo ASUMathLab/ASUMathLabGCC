@@ -1,0 +1,27 @@
+#include "CMatrix.cpp"
+#include "CMatrix.h"
+#include <iostream>
+#include<string>
+#include <fstream>
+
+int main(int argc, char** argv){
+	cout<<"Program Name:\n"<<argv[0]<<endl;
+	if(argc > 1){
+		cout<<"Number of arguments: "<<argc - 1<<endl;
+		ifstream inline(argv[1])
+		string a;
+		if(!inline.bad()) {
+			while(getline(inline , a)) {
+				cout << a << endl;
+			
+			}
+			inline.close()
+		} else {
+			cout << "File Has An Error" <<endl;	
+		}
+	} else {
+	// Abied or Ezzat
+	cou	t << "abied" << endl;
+	}
+	return 0;
+}
