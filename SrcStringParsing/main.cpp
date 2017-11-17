@@ -334,7 +334,7 @@ void implemetation(){
             numlines += n;
     }
 }
-void implemetation(string instruction){
+void implemetation(ifstream& infile){
 
     vector<string> matrixNames;
     vector<CMatrix> matrix;
@@ -343,16 +343,16 @@ void implemetation(string instruction){
 
     string line = "";
     int numlines = 0;
+    while ( getline(infile,line)) {
 
-  //  while (instruction) {
-         //  getline(instruction, line);
-            line=instruction;
+            cout<<line<<endl;
+
             if (line == "end" || line == "end;") {
                     cout << "thanks, good bye..." << endl;
-                  //  break;
+                    break;
             }
             if (line.empty()) {
-                   // continue;
+                    continue;
             }
             /*
             if (line.find(";") == string::npos) {
@@ -370,7 +370,7 @@ void implemetation(string instruction){
                     for (int i = 0; i < matrixNames.size(); i++) {
                             if (matrixNames[i] == line && i < matrix.size()) {
                                     cout << matrix[i];
-                                 //   break;
+                                    break;
                             }
                             if (i == matrixNames.size() - 1) {
                                     cout << "unintiallized matrix" << endl;
@@ -389,7 +389,7 @@ void implemetation(string instruction){
                             if (l == matrixNames[i]) {
                                     existingFlag.push_back(true);
                                     existingIndex.push_back(i);
-                                  //  break;
+                                   break;
                             }
                             if (i == matrixNames.size() - 1) {
                                     existingFlag.push_back(false);
@@ -442,7 +442,9 @@ void implemetation(string instruction){
                                     if (getIndexAndCheckIfExist(matrixNames, matrix,
                                             firstparmeter, firstindex, found1,
                                             secondparmeter, secondindex, found2))
-                                         //   break;
+
+
+                                        break;
 
                                     if (!existingFlag[numlines + i]) {
                                             matrix.push_back(matrix[firstindex] + matrix[secondindex]);
@@ -461,7 +463,7 @@ void implemetation(string instruction){
                                     if (getIndexAndCheckIfExist(matrixNames, matrix,
                                             firstparmeter, firstindex, found1,
                                             secondparmeter, secondindex, found2))
-                                         //   break;
+                                           break;
 
                                     if (!existingFlag[numlines + i]) {
                                             matrix.push_back(matrix[firstindex] - matrix[secondindex]);
@@ -481,7 +483,7 @@ void implemetation(string instruction){
                                     if (getIndexAndCheckIfExist(matrixNames, matrix,
                                             firstparmeter, firstindex, found1,
                                             secondparmeter, secondindex, found2))
-                                         //   break;
+                                            break;
 
                                     if (!existingFlag[numlines + i]) {
                                             matrix.push_back(matrix[firstindex] * matrix[secondindex]);
@@ -500,7 +502,7 @@ void implemetation(string instruction){
                                     if (getIndexAndCheckIfExist(matrixNames, matrix,
                                             firstparmeter, firstindex, found1,
                                             secondparmeter, secondindex, found2))
-                                           // break;
+                                           break;
 
                                     if (!existingFlag[numlines + i]) {
                                             matrix.push_back(matrix[firstindex] * matrix[secondindex].getInverse());
@@ -524,13 +526,13 @@ void implemetation(string instruction){
                                                     else
                                                             found1 = true;
 
-                                                   // break;
+                                                  break;
                                             }
                                     }
 
                                     if (!found1) {
                                             cout << firstParmeter << " is not Intiallized" << endl;
-                                           // break;
+                                           break;
                                     }
 
                                     if (!existingFlag[numlines + i]) {
@@ -551,13 +553,13 @@ void implemetation(string instruction){
                                                             found = false;
                                                     else
                                                             found = true;
-                                                   // break;
+                                                   break;
                                             }
                                     }
 
                                     if (!found) {
                                             cout << line << " is not Intiallized" << endl;
-                                          //  break;
+                                          break;
                                     }
 
                                     if (!existingFlag[numlines + i]) {
@@ -576,7 +578,7 @@ void implemetation(string instruction){
             }
 
             numlines += n;
-
+}
 }
 
 
@@ -585,18 +587,10 @@ int main(int argc, char* argv[]){
 
         if (argc > 1)
         {
-            string line;
+          //  string line;
            // int number_of_lines=0;
-
-           ifstream input_file( argv[1] );
-
-                    while(!input_file.eof())
-                    {
-                         getline(input_file,line);
-                        // cout<<line<<endl;
-                         implemetation(line);
-                    }
-
+        ifstream input_file(argv[1]);
+          implemetation(input_file);
 
          /*     for(int i = 1; i < argc; ++i)
                {
